@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coba</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #online {
+            color: green;
+            font-size: 2.5em;
+        }
+
+        #offline {
+            color: red;
+            font-size: 2.5em;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="online">online</h1>
+    <h1 id="offline">offline</h1>
+
+    <script>
+        const online = document.getElementById('online');
+        const offline = document.getElementById('offline');
+
+        if (navigator.online) {
+            online.style.display = "block";
+            offline.style.display = "none";
+        } else if (navigator.offline) {
+            online.style.display = "none";
+            offline.style.display = "block"
+        }
+
+        window.addEventListener('online', () => {
+            online.style.display = "block";
+            offline.style.display = "none";
+        });
+
+        window.addEventListener('offline', () => {
+            online.style.display = "none";
+            offline.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>
